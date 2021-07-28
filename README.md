@@ -8,7 +8,7 @@ $ git clone https://github.com/xKenyh/whatsapp-bot-base/
 
 ## Usage 🍳
 ```
-$ npm install whatsapp-web.js qrcode-terminal dotenv
+$ npm install
 # Open "config.js" and enter your credentials
 $ npm start
 # scan QR Code
