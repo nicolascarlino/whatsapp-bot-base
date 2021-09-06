@@ -1,17 +1,15 @@
 {
   "name": "whatsapp-bot-base",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a base for code easily a Whatsapp Bot, feel free to use it.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index"
+    "start": "node index.js"
   },
   "author": "Kenyh",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "dotenv": "^10.0.0",
     "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.13.2"
+    "whatsapp-web.js": "^1.14.1"
   }
 }

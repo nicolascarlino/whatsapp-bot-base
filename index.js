@@ -1,22 +1,20 @@
-// index.js
-// This is a base for a Whatsapp bot, feel free to use it, for help go to the Github Repositorie
-// https://github.com/xKenyh/whatsapp-bot-base/
+/* 
+ 
+ File: index.js
+ Description: This is a base for a Whatsapp bot, feel free to use it, for help go to the Github Repositorie
+ https://github.com/xKenyh/whatsapp-bot-base/.
+ Made by: xKenyh
+ Last Update: 5/09/2021 by Junai22
+
+*/
 
 // Packages
-require('dotenv').config()
 const fs = require('fs');
 const qrcode = require('qrcode-terminal');
-const { Client } = require('whatsapp-web.js');
-
-// Json
-const config = require("./config.json")
+const { Client, MessageMedia } = require('whatsapp-web.js');
 
 // Initialize code
 const SESSION_FILE_PATH = "./session.json";
-
-// Number configuration
-const country_code = config.country_code;
-const number = config.number;
 
 let sessionData;
 
@@ -26,6 +24,9 @@ if(fs.existsSync(SESSION_FILE_PATH)) {
 
 const client = new Client({
     session: sessionData,
+    puppeteer: {
+	    headless: true, args: ["--no-sandbox", '--disable-setuid-sandbox', '--disable-extensions'] 
+	}
 });
 
 client.initialize();
@@ -56,16 +57,7 @@ client.on('ready', () => {
     console.log("[Whatsapp Bot] The client initialized successfully");
 })
 
-
-// Functions
-// Your functions here, example:
-// Generates a random number between 1 and 5
-function generate_random(){
-    var random_number = Math.floor(Math.random() * 12) + 1;
-}
-
 // Commands
-// Help
 client.on('message', async msg => {
     if(msg.body === "/help") {
         client.sendMessage(msg.from, `[Whatsapp Bot] 
@@ -94,6 +86,4 @@ client.on('message', async msg => {
             `);
         }
     }
-
-    // Your commands
 })
